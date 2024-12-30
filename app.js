@@ -1,37 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-/**
- *
- * <div id="parent">
- *      <div id="child">
- *         <h1>I'm h1 tag</h1>
- *         <h2>I'm h1 tag</h2>
- *      </div>
- * <div id="child2">
- *         <h1>I'm h1 tag</h1>
- *         <h2>I'm h1 tag</h2>
- *      </div>
- * </div>
- *
- * ReactElement(Object) => HTML(Browser Understands)
- */
+//jsx -> babel transpiles it to react.createElement
+//jsx is not html inside html. It is a html/xml like syntax
+const Heading = <h1>Hello from JSX</h1>;
 
-const parent = React.createElement("div", { id: "parent" }, [
-    React.createElement("div", { id: "child" }, [
-      React.createElement("h1", {}, "I'm an h1 tag"),
-      React.createElement("h2", {}, "I'm an h2 tag"),
-    ]),
-    React.createElement("div", { id: "child2" }, [
-      React.createElement("h1", {}, "I'm an h1 tag"),
-      React.createElement("h2", {}, "I'm an h2 tag"),
-    ]),
-  ]);
-  
-  //JSX
-  
-  console.log(parent); // object
-  
-  const root = ReactDOM.createRoot(document.getElementById("root"));
-  
-  root.render(parent);
+//react components
+//class based components  -OLD
+// Functional components - NEW
+
+const AnotherComponent = () => {
+    <div>
+      <h1>HEllo from Another Component</h1>
+    </div>
+};
+
+//React Functional Component
+const HeadingComponent = () => {
+    <div>
+      <AnotherComponent />
+      <h1 className="heading">Namaste React Functional Component</h1>
+      <AnotherComponent />
+    </div>
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));  
+root.render(<HeadingComponent />);
+
+
+
